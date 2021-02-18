@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer = arr;
+                // 처음부터 마지막 직전까지
+                for (let i = 0; i < arr.length - 1; i++) {
+                  // idx는 i로 초기화한다.
+                  let idx = i;
+                  
+                  // j는 i 바로 뒤부터
+                  for (let j = i + 1; j < arr.length; j++) {
+                    // 비교되는 값(arr[j])이 기준값(arr[idx]) 보다 작으면 인덱스를 바꿔준다.
+                    if (arr[j] < arr[idx]) {
+                      idx = j;
+                    }
+                  }
+                  // 서로 값 바꾸기
+                  [arr[i], arr[idx]] = [arr[idx], arr[i]];
+                }
+                return answer;
+            }
+
+            let arr = [13, 5, 11, 7, 23, 15];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
