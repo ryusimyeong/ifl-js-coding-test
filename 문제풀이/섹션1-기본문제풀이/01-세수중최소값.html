@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer = 0;
+
+                // a와 b를 비교
+                if (a < b) {
+                  answer = a;
+                } else {
+                  answer = b;
+                }
+                // a와 b를 비교한 값을 c와 비교
+                if (c < answer) {
+                  answer = c;
+                }
+
+                // 사실 내장 함수를 쓰는 게 가장 간단하다.
+                // answer = Math.min(a, b, c);
+                return answer;
+            }
+
+            console.log(solution(6, 5, 11));
+        </script>
+    </body>
+</html>
