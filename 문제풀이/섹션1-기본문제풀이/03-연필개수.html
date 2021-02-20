@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n){
+                let answer;
+                // 나머지가 있으면 1다스를 더 써야 함
+                // 소수점이 있으면 올림시켜 버린다.
+                answer = Math.ceil(n / 12);
+                return answer;
+            }
+
+            console.log(solution(178));
+        </script>
+    </body>
+</html>
