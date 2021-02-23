@@ -8,7 +8,14 @@
 <body>
   <script>
     function solution(s) {
-      let answer = ""
+      let answer = "";
+
+      for (let word of s) {
+        if (word.length > answer.length) {
+          answer = word;
+        }
+      }
+
       return answer;
     }
     let str = ["teacher", "time", "student", "beautiful", "good"];
