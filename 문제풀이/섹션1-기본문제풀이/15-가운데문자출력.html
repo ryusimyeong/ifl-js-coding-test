@@ -8,10 +8,22 @@
 <body>
   <script>
     function solution(s) {
-      let answer;
+      let answer = '';
+      const mid = Math.floor(s.length / 2);
+      /**
+      // 길이가 홀수일 때 ? 아닐 때 :
+      answer = s.length % 2 === 1
+        ? answer = s.substring(mid, mid + 1)
+        : answer = s.substring(mid - 1, mid + 1)
+/*/
+      answer = s.length % 2 === 1
+        ? answer = s.substr(mid, 1)
+        : answer = s.substr(mid - 1, 2)
+      /**/
       return answer;
     }
     console.log(solution("study"));
+    console.log(solution("good"));
   </script>
 </body>
 
