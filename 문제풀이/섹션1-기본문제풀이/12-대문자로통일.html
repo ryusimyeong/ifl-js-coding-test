@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s) {
+      let answer = '';
+      /**
+      answer = s.toUpperCase();
+      /*/
+      for (let letter of s) {
+        let n = letter.charCodeAt();
+        // 소문자면
+        if (97 <= n && n <= 122) {
+          // 대문자로 변환
+          letter = String.fromCharCode(n - 32);
+        }
+        answer += letter
+      }
+      /**/
+      return answer;
+    }
+
+    let str = "ItisTimeToStudy";
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>
