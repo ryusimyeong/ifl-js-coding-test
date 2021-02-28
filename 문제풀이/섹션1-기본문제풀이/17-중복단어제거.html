@@ -1,0 +1,26 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s) {
+      let answer;
+      /**
+      // Set을 이용한 중복 제거
+      answer = [...new Set(s)];
+      /*/
+      answer = s.filter((v, i) => s.indexOf(v) === i);
+      /**/
+      return answer;
+    }
+    let str = ["good", "time", "good", "time", "student"];
+
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>
