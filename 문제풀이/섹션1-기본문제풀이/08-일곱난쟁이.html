@@ -8,7 +8,44 @@
 <body>
   <script>
     function solution(arr) {
+      /**/
+      // 내 풀이
+      let answer = [];
+      while (true) {
+        // 주어진 숫자 중 랜덤한 숫자를 뽑는다.
+        const idx = (Math.floor(Math.random() * arr.length))
+
+        // 중복값 배제
+        if (answer.includes(arr[idx])) continue;
+        answer.push(arr[idx]);
+
+        // 7개를 뽑을 때까지 반복
+        if (answer.length < 7) continue;
+
+        // 합이 100이면 반복 종료. 아니면 다시.
+        const sum = answer.reduce((acc, v) => acc + v, 0);
+        if (sum === 100) break;
+        else answer = [];
+      }
+      /*/
       let answer = arr;
+      // 합이 100이 되어야 한다?
+      // 9개를 합한 값에서 가짜 난쟁이 2개의 합을 뺐을 때 100이 되면 된다.
+      let sum = arr.reduce((a, v) => a + v, 0);
+
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          const fakes = arr[i] + arr[j];
+          if (sum - fakes === 100) {
+            // 뒤 인덱스를 먼저 지워야 사이드 이펙트가 없다. 
+            // 앞 인덱스를 먼저 지우면 뒷값의 인덱스가 변해서 다른 값이 나온다.
+            arr.splice(j, 1);
+            arr.splice(i, 1);
+          }
+        }
+      }
+      /**/
+
       return answer;
     }
 
