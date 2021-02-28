@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s) {
+      let ans = '';
+      /**
+      // Set을 이용한 중복값 제거
+      answer = [...new Set(s.split(''))].join('');
+      /*/
+      for (let i = 0; i < s.length; i++) {
+        // s.indexOf(s[i])값과 i 값이 같지 않으면 중복된 문자다.
+        if (s.indexOf(s[i]) === i) {
+          ans += s[i];
+        }
+      }
+      /**/
+      return ans;
+    }
+    console.log(solution("ksekkset"));
+  </script>
+</body>
+
+</html>
