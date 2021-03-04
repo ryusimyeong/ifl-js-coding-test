@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let answer = 0;
+      let combo = 0;
+      /**
+      // 내 풀이
+      arr.forEach(v => {
+        if (v === 1) {
+          combo++;
+        } else {
+          combo = 0;
+        }
+        answer += combo;
+      });
+      /*/
+      // 연속으로 맞춘 개수만큼 추가되는 것
+      for (let v of arr) {
+        if (v === 1) {
+          combo++;
+          answer += combo;
+        } else {
+          combo = 0;
+        }
+      }
+      /**/
+
+      return answer;
+    }
+
+    let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
