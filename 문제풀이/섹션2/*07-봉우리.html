@@ -8,26 +8,32 @@
 <body>
   <script>
     function solution(arr) {
-      let answer = [];
-
+      let answer = 0;
+      let points = [];
 
       for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[i].length; j++) {
-          const UP = arr[i][j] > arr[i - 1][j];
-          const RIGHT = arr[i][j] > arr[i][j + 1];
-          const DOWN = arr[i][j] > arr[i + 1][j];
-          const LEFT = arr[i][j] > arr[i][j - 1];
           switch (i) {
             case 0:
               switch (j) {
                 case 0:
-                  if (RIGHT && DOWN) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j + 1] &&
+                    arr[i][j] > arr[i + 1][j]) {
+                    points.push([i, j]);
+                  }
                   break;
                 case arr[i].length - 1:
-                  if (LEFT && DOWN) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] &&
+                    arr[i][j] > arr[i + 1][j]) {
+                    points.push([i, j]);
+                  }
                   break;
                 default:
-                  if (LEFT && RIGHT && DOWN) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] &&
+                    arr[i][j] > arr[i][j + 1] &&
+                    arr[i][j] > arr[i + 1][j]) {
+                    points.push([i, j]);
+                  }
                   break;
               }
               break;
@@ -35,13 +41,23 @@
             case arr.length - 1:
               switch (j) {
                 case 0:
-                  if (RIGHT && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j + 1] && // 오
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
                 case arr[i].length:
-                  if (LEFT && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] && // 왼
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
                 default:
-                  if (LEFT && RIGHT && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] && // 왼
+                    arr[i][j] > arr[i][j + 1] && // 오
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
               }
               break;
@@ -49,13 +65,26 @@
             default:
               switch (j) {
                 case 0:
-                  if (RIGHT && DOWN && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j + 1] && // 오
+                    arr[i][j] > arr[i + 1][j] && // 아래
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
                 case arr[i].length - 1:
-                  if (LEFT && DOWN && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] && // 왼
+                    arr[i][j] > arr[i + 1][j] && // 아래
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
                 default:
-                  if (LEFT && RIGHT && DOWN && UP) answer.push([i, j]);
+                  if (arr[i][j] > arr[i][j - 1] && // 왼
+                    arr[i][j] > arr[i][j + 1] && // 오
+                    arr[i][j] > arr[i + 1][j] && // 아래
+                    arr[i][j] > arr[i - 1][j]) { // 위
+                    points.push([i, j]);
+                  }
                   break;
               }
               break;
@@ -63,7 +92,7 @@
         }
       }
 
-      answer = [...new Set(answer)].length;
+      answer = [...new Set(points)].length;
       return answer;
     }
 
