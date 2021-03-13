@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s) {
+      /**
+      s = s.toLowerCase();
+      let s2 = s.split('').filter(l => 97 <= l.charCodeAt() && l.charCodeAt() <= 122).join('');
+      if (s2 !== arr.reverse().join('')) return 'NO';
+      return 'YES'
+      /*/
+      // 소문자 a-z 가 아닌 것들(^)을 전부(g) 찾아서 빈 문자열로 바꾼다.
+      s = s.toLowerCase().replace(/[^a-z]/g, '');
+      if (s.splite('').reverse().join('') !== s) return 'NO';
+      return 'YES';
+      /**/
+    }
+
+    let str = "found7, time: study; Yduts; emit, 7Dnuof";
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>
