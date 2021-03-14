@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s, t) {
+      let answer = [];
+      let tIdxList = [];
+      let arr = Array.from(s);
+      // t가 있는 인덱스를 뽑는다.
+      arr.forEach((v, i) => {
+        if (v === t) tIdxList.push(i);
+      });
+
+      arr.forEach((_, i) => {
+        let min = Number.MAX_SAFE_INTEGER;
+
+        tIdxList.forEach(v => {
+          const gapAbs = Math.abs(v - i);
+          if (gapAbs < min) min = gapAbs;
+        })
+
+        answer.push(min);
+      });
+
+      return answer;
+    }
+
+    let str = "teachermode";
+    console.log(solution(str, 'e'));
+  </script>
+</body>
+
+</html>

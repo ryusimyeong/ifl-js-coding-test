@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(str) {
+      // 배열로 만든다 -> 숫자형으로 변환했을 때 NaN이 아닌 것들만 모은다. -> string으로 만든다.-> 숫자로 만든다.
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
+      let answer = Number(str.split('').filter(v => !Number.isNaN(v / 1)).join(''));
+      return answer;
+    }
+
+    let str = "g0en2T0s8eSoft";
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>
