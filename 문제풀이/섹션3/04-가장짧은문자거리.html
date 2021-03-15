@@ -13,15 +13,19 @@
       let arr = Array.from(s);
       // t가 있는 인덱스를 뽑는다.
       arr.forEach((v, i) => {
-        if (v === t) tIdxList.push(i);
+        if (v === t) {
+          tIdxList.push(i);
+        }
       });
-
+      // 주어진 문자열의 인덱스를 탐색하면서 t가 들어간 인덱스와의 거리가 가장 짧은 값을 구한다.
       arr.forEach((_, i) => {
         let min = Number.MAX_SAFE_INTEGER;
 
         tIdxList.forEach(v => {
-          const gapAbs = Math.abs(v - i);
-          if (gapAbs < min) min = gapAbs;
+          const gap = Math.abs(v - i);
+          if (gap < min) {
+            min = gap;
+          }
         })
 
         answer.push(min);
