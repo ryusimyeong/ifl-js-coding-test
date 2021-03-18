@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(s) {
+
+      // 내 풀이
       let answer = "";
       let count = 1;
 
@@ -18,12 +20,13 @@
         } else {
           answer += s[i];
           // 만약 반복횟수가 1이 아니라면
-          if (count !== 1) {
+          if (count > 1) {
             answer += count;
             count = 1;
           }
         }
       }
+
 
       return answer;
     }
