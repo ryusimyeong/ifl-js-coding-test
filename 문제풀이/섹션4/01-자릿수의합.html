@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, arr) {
+      let answer = 0;
+      let max = Number.MIN_SAFE_INTEGER; // 최대값 초기화
+      let tgIdx = 0; // 출력할 값의 인덱스
+      // 각 자리수의 합으로 이루어진 배열 생성
+      let arr2 = arr.map(n =>
+        String(n).split('').reduce((a, v) => a + Number(v), 0)
+      );
+
+      for (let [i, n] of arr2.entries()) {
+        if (n > max) {
+          max = n;
+          tgIdx = i;
+        } else if (n === max) {
+          // 값이 같은데 원래의 숫자가 더 큰 숫자를 세팅한다.
+          if (arr[tgIdx] < arr[i]) {
+            max = n;
+            tgIdx = i;
+          }
+        }
+      }
+
+      answer = arr[tgIdx];
+      return answer;
+    }
+
+    let arr = [128, 460, 603, 40, 521, 137, 123];
+    console.log(solution(7, arr));
+  </script>
+</body>
+
+</html>
+
+
+
+<!-- <html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, arr) {
+      let answer;
+      return answer;
+    }
+
+    let arr = [128, 460, 603, 40, 521, 137, 123];
+    console.log(solution(7, arr));
+  </script>
+</body> -->
