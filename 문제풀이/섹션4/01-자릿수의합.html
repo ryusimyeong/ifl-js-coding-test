@@ -9,6 +9,7 @@
   <script>
     function solution(n, arr) {
       let answer = 0;
+      /**
       let max = Number.MIN_SAFE_INTEGER; // 최대값 초기화
       let tgIdx = 0; // 출력할 값의 인덱스
       // 각 자리수의 합으로 이루어진 배열 생성
@@ -30,6 +31,26 @@
       }
 
       answer = arr[tgIdx];
+      /*/
+      let max = Number.MIN_SAFE_INTEGER;
+
+      for (let num of arr) {
+        let sum = 0;
+        let tmp = num;
+
+        while (tmp) {
+          sum += (tmp % 10);
+          tmp = Math.floor(tmp / 10);
+        }
+
+        if (sum > max) {
+          max = sum;
+          answer = num;
+        } else if (sum === max) {
+          if (answer < num) answer = num;
+        }
+      }
+      /**/
       return answer;
     }
 
