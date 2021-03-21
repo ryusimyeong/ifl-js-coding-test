@@ -38,9 +38,10 @@
         let sum = 0;
         let tmp = num;
 
+        // tmp가 0이 될 때까지 반복
         while (tmp) {
-          sum += (tmp % 10);
-          tmp = Math.floor(tmp / 10);
+          sum += (tmp % 10); // 10으로 나눈 나머지는 일의 자리의 수
+          tmp = Math.floor(tmp / 10); // 10으로 나눈 몫은 일의 자리의 수를 제외한 수들
         }
 
         if (sum > max) {
@@ -63,7 +64,8 @@
 
 
 
-<!-- <html>
+
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -80,4 +82,4 @@
     let arr = [128, 460, 603, 40, 521, 137, 123];
     console.log(solution(7, arr));
   </script>
-</body> -->
+</body>
