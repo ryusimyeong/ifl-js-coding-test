@@ -9,6 +9,7 @@
   <script>
     function solution(n, k, card) {
       let answer;
+      /**
       let sumArr = [];
       // 3장 뽑아서 나올 수 있는 모든 경우의 수
       for (let i = 0; i < card.length - 2; i++) {
@@ -33,6 +34,20 @@
           break;
         }
       }
+      /*/
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set
+      let s = new Set(); // 중복 제거를 위한 Set
+      for (let i = 0; i < n - 2; i++) {
+        for (let j = i + 1; j < n - 1; j++) {
+          for (let k = j + 1; k < n; k++) {
+            s.add(card[i] + card[j] + card[k]); // Set에 원소를 집어넣는 메소드는 add
+          }
+        }
+      }
+      // 내림차순 정렬을 위한 배열화
+      s = [...s].sort((a, b) => b - a);
+      answer = s[k - 1];
+      /**/
       return answer;
     }
 
