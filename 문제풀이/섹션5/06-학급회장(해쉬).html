@@ -8,7 +8,24 @@
 <body>
   <script>
     function solution(s) {
-      let answer;
+      let answer = '';
+      let hash = {}
+      let max = Number.MIN_SAFE_INTEGER;
+      const arr = [...new Set(s.split(''))];
+      for (let l of arr) {
+        hash[l] = 0;
+      }
+
+      for (let l of s) {
+        hash[l]++;
+      }
+
+      for (let [k, v] of Object.entries(hash)) {
+        if (max < v) {
+          max = v;
+          answer = k;
+        }
+      }
       return answer;
     }
 
