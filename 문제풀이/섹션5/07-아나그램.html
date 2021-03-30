@@ -8,12 +8,23 @@
 <body>
   <script>
     function solution(str1, str2) {
-      let answer;
+      let answer = 'YES';
+      const arr1 = str1.split('').sort();
+      const arr2 = str2.split('').sort();
+
+      arr1.forEach((l, i) => {
+        if (l !== arr2[i]) {
+          answer = 'NO';
+        }
+      });
       return answer;
     }
 
     let a = "AbaAeCe";
     let b = "baeeACA";
+    console.log(solution(a, b));
+    a = "abaCC";
+    b = "Caaab";
     console.log(solution(a, b));
   </script>
 </body>
