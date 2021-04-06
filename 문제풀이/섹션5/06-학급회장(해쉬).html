@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(s) {
+      /**
+      // 내 풀이
       let answer = '';
       let hash = {}
       let max = Number.MIN_SAFE_INTEGER;
@@ -26,6 +28,30 @@
           answer = k;
         }
       }
+      /*/
+      // hash. Map 객체를 이용해서 푸는 풀이
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map
+      let answer = '';
+      // key와 value로 이루어진 객체다.
+      let sH = new Map(); // strHash
+      for (let l of s) {
+        // l 이라는 key가 존재하는지
+        if (sH.has(l)) {
+          sH.set(l, sH.get(l) + 1); // 기존값에 1을 더해서 다시 set
+        } else {
+          sH.set(l, 1);
+        }
+      }
+      let max = Number.MIN_SAFE_INTEGER;
+      // Object.entries 따위의 메소드가 필요없다.
+      for (let [key, val] of sH) {
+        if (val > max) {
+          max = val;
+          answer = key;
+        }
+      }
+      return answer;
+      /**/
       return answer;
     }
 
