@@ -8,7 +8,25 @@
 <body>
   <script>
     function solution(s) {
-      let answer;
+      let answer = '';
+      let block = 0;
+
+      for (let l of s) {
+        if (l === '(') {
+          block++;
+          continue;
+        } else if (l === ')') {
+          block--;
+          continue;
+        }
+
+        if (block > 0) {
+          continue;
+        } else {
+          answer += l;
+        }
+      }
+
       return answer;
     }
 
