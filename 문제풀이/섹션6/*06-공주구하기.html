@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, k) {
+      let answer;
+      const princes = Array.from({ length: n }, (v, i) => i + 1);
+      const queue = [];
+      let num = 1;
+
+      while (princes.length > 1) {
+
+        for (let i = 0; i < princes.length; i++) {
+          if (num === k) {
+            princes.splice(i, 1);
+            num = 2;
+          } else {
+            num++;
+          }
+        }
+      }
+
+      answer = princes.pop();
+
+
+      return answer;
+    }
+
+    console.log(solution(8, 3));
+  </script>
+</body>
+
+</html>
