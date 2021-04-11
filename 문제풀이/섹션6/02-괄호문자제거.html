@@ -8,8 +8,6 @@
 <body>
   <script>
     function solution(s) {
-      /**
-      // 내 풀이
       let answer = '';
       let block = 0;
 
@@ -28,24 +26,6 @@
           answer += l;
         }
       }
-      /*/
-      let answer;
-      const stack = [];
-
-      for (const l of s) {
-        switch (l) {
-          case ')':
-            // stack에서 '(' 나올 떄까지 반복
-            while (stack.pop() !== '(');
-            break;
-
-          default:
-            stack.push(l);
-            break;
-        }
-      }
-      answer = stack.join('');
-      /**/
 
       return answer;
     }
