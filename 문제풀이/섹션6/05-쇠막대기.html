@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(s) {
+      /**
+      // 내 풀이
       let answer = 0; // 쇠막대기의 총 개수
       let stack = []; // 레이저 사정권 쇠막대기
 
@@ -23,7 +25,6 @@
               stack.push(s[i]);
             }
             break;
-
           case ')':
             // 레이저
             if (s[i - 1] === '(') continue;
@@ -32,6 +33,24 @@
             break;
         }
       }
+      /*/
+      let answer = 0;
+      const stack = [];
+      let prev = '' // 이전값 판별용
+      for (const x of s) {
+        switch (x) {
+          case '(':
+            stack.push(x);
+            break;
+          case ')':
+            stack.pop(); // 닫는 괄호는 레이저인지 아닌지 판별해야 하므로 먼저 뺴준다.
+            if (prev === '(') answer += stack.length;
+            else answer++;
+            break;
+        }
+        prev = x; // 이전 값 넣어주기
+      }
+      /**/
 
       return answer;
     }
