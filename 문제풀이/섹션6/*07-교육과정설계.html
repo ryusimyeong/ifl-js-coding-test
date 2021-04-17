@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(need, plan) {
+      /**
+      // 내 풀이
+      let answer = 'YES';
+      const queue = [];
+
+      for (const l of plan) {
+        if (need.includes(l)) queue.push(l);
+        else continue;
+      }
+
+      for (let i = 0; i < need.length; i++) {
+        if (need[i] !== queue[i]) return 'NO';
+      }
+      /*/
+      let answer = 'YES';
+      let queue = need.split(''); // 필수과목
+
+      for (let x of plan) {
+        if (!queue.includes(x)) continue;
+        // 필수과목의 순서가 잘못되었을 때
+        if (x !== queue.shift()) return 'NO';
+      }
+      // 필수과목이 누락되었을 때
+      if (queue.length) return 'NO';
+
+      /**/
+
+      return answer;
+    }
+
+    let a = "CBA";
+    let b = "CBDAGE";
+    console.log(solution(a, b));
+  </script>
+</body>
+
+</html>
