@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(meetings) {
+      let answer = 0;
+      let meetingCount = [];
+      let finishTime = 0;
+
+      meetings.sort((prev, next) => prev[0] - next[0]);
+
+      for (let i = 0; i < meetings.length; i++) {
+        let mi = meetings[i];
+        meetingCount.push(mi);
+        finishTime = mi[1];
+        for (let j = i + 1; j < meetings.length; j++) {
+          let mj = meetings[j];
+
+          if (mj[0] >= finishTime) {
+            meetingCount.push(mj);
+            finishTime = mj[1];
+          } else {
+            continue;
+          }
+        }
+        answer = Math.max(answer, meetingCount.length);
+        meetingCount = [];
+      }
+
+      return answer;
+    }
+
+    let arr = [[1, 4], [2, 3], [3, 5], [4, 6], [5, 7]];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>

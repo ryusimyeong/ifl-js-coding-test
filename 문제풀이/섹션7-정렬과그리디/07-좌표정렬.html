@@ -11,8 +11,10 @@
       let answer = arr;
 
       answer.sort((prev, next) => {
+        // x좌표 기준 정렬
         if (prev[0] > next[0]) return 1;
         else if (prev[0] < next[0]) return -1;
+        // x좌표가 같을 땐 y좌표 기준 정렬
         else {
           if (prev[1] > next[1]) return 1;
           else if (prev[1] < next[1]) return -1
