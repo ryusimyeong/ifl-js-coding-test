@@ -8,7 +8,28 @@
 <body>
   <script>
     function solution(target, arr) {
-      let answer;
+      let answer = 0;
+      // 오름차순 정렬
+      const alias = [...arr];
+      alias.sort((prev, next) => prev - next);
+
+      let min = 0;
+      let max = alias.length - 1;
+      let mid = Math.ceil(alias.length / 2);
+
+      while (min < max) {
+        if (target > alias[mid]) {
+          min = mid;
+          mid = Math.ceil((max + min) / 2);
+        } else if (target < alias[mid]) {
+          max = mid;
+          mid = Math.ceil((max + min) / 2);
+        } else {
+          answer = mid + 1;
+          break;
+        }
+      }
+
       return answer;
     }
 
