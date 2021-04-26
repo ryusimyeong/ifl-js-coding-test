@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(arr) {
+      /**
+      // 내 풀이
       let answer = arr;
 
       answer.sort((prev, next) => {
@@ -21,6 +23,17 @@
           else return 0;
         }
       });
+      /*/
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+      let answer = arr;
+
+      arr.sort((prev, next) => {
+        // x좌표 정렬
+        if (prev[0] === next[0]) return prev[1] - next[1];
+        else return prev[0] - next[0];
+      })
+
+      /**/
 
       return answer;
     }
