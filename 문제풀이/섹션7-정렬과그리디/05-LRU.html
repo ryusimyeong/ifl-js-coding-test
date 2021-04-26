@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(size, arr) {
+      /**
+      // 내풀이
       let answer = Array.from({ length: size }).fill(0);
 
       for (let num of arr) {
@@ -16,13 +18,15 @@
           const tgIdx = answer.findIndex(n => n === num);
           answer.splice(tgIdx, 1);
           answer.unshift(num);
-
           // cache miss
         } else {
           answer.pop();
           answer.unshift(num);
         }
       }
+      /*/
+      let answer;
+      /**/
 
       return answer;
     }
