@@ -8,8 +8,9 @@
 <body>
   <script>
     function solution(arr) {
+      /**
+      // 내 풀이
       let answer = [];
-
       for (let i = 1; i < arr.length; i++) {
         if (arr[i] < arr[i - 1]) {
           if (answer.length) {
@@ -21,7 +22,16 @@
 
         if (answer.length === 2) break;
       }
+      /*/
+      let answer = [];
+      const sorted = [...arr].sort((prev, next) => prev - next);
 
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === sorted[i]) continue;
+
+        answer.push(arr[i]);
+      }
+      /**/
       return answer;
     }
 
