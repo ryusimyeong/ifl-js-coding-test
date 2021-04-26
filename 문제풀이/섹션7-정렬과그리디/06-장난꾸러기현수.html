@@ -27,9 +27,7 @@
       const sorted = [...arr].sort((prev, next) => prev - next);
 
       for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === sorted[i]) continue;
-
-        answer.push(arr[i]);
+        if (arr[i] !== sorted[i]) answer.push(i + 1);
       }
       /**/
       return answer;
