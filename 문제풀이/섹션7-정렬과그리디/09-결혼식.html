@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(times) {
+      /**
+      // 내 풀이
       let answer = Number.MIN_SAFE_INTEGER;
       let existCount = 0;
 
@@ -18,6 +20,30 @@
         answer = Math.max(answer, existCount);
         existCount = 0;
       });
+      /*/
+      let answer = Number.MIN_SAFE_INTEGER;
+      let timeLine = [];
+
+      for (let x of times) {
+        timeLine.push([x[0], 's']);
+        timeLine.push([x[1], 'e']);
+      }
+
+      timeLine.sort((prev, next) => {
+        // s보다 e가 아스키 넘버가 앞선다.
+        // 가는 사람을 먼저 보내줘야 최대값 계산에서 오류가 없음
+        if (prev[0] === next[0]) return prev[1].charCodeAt() - next[1].charCodeAt();
+        else return prev[0] - next[0];
+      });
+
+      let count = 0;
+
+      for (let x of timeLine) {
+        if (x[1] === 's') count++;
+        else count--;
+        answer = Math.max(answer, count);
+      }
+      /**/
 
       return answer;
     }
