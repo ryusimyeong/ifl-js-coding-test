@@ -8,26 +8,42 @@
 <body>
   <script>
     function solution(n, k) {
+      /**
+      // 내 풀이
       let answer;
-      const princes = Array.from({ length: n }, (v, i) => i + 1);
-      const queue = [];
-      let num = 1;
+      // queue
+      // FIFO: 선입선출
+      let queue = Array.from({ length: n }, (v, i) => i + 1);
+      let count = 1;
 
-      while (princes.length > 1) {
+      while (queue.length > 1) {
+        let out = queue.shift();
 
-        for (let i = 0; i < princes.length; i++) {
-          if (num === k) {
-            princes.splice(i, 1);
-            num = 2;
-          } else {
-            num++;
-          }
+        if (count === k) {
+          count = 1;
+        } else {
+          count++;
+          queue.push(out);
         }
       }
-
-      answer = princes.pop();
-
-
+      answer = queue[0];
+      /*/
+      let answer;
+      let queue = Array.from({ length: n }, (v, i) => i + 1);
+      // queue 길이가 0이상일 때
+      while (queue.length) {
+        // k전까지는 뒤로 돌린다.
+        for (let i = 1; i < k; i++) {
+          queue.push(queue.shift());
+        }
+        // k번째 수를 말하는 왕자는 제외
+        queue.shift();
+        // 최후에 남은 왕자가 답
+        if (queue.length === 1) {
+          answer = queue.shift();
+        }
+      }
+      /**/
       return answer;
     }
 
