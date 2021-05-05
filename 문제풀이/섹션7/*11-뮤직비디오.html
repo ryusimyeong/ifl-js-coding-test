@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    // m 이하인지 식별하는 함수
+    // 답이 유효한지 아닌지 확인하는 함수
+    function count(songs, capacity) {
+      let cnt = 1; // DVD장 수
+      let sum = 0; // DVD장 당 담긴 노래 길이
+      for (let s of songs) {
+        // 다음 DVD에 노래 저장
+        if (sum + s > capacity) {
+          cnt++;
+          sum = s;
+          // 현재 DVD에 노래 저장
+        } else {
+          sum += s;
+        }
+      }
+
+      return cnt;
+    }
+
+    function solution(m, songs) {
+      // 선생님 풀이 
+      // 이분 검색을 통해서 답을 정한다.
+      let answer;
+      // dvd 용량의 최소값은 일단 가장 큰 원소, 최대값은 원소의 합이다.
+      let lt = Math.max(...songs);
+      let rt = songs.reduce((acc, v) => acc + v, 0);
+      // 이분검색 종료 조건은 외워버리자. (lt값이 rt값보다 커지면 종료)
+      while (lt <= rt) {
+        let mid = Math.ceil((lt + rt) / 2);
+
+        if (count(songs, mid) <= m) {
+          answer = mid;
+          rt = mid - 1;
+        } else {
+          lt = mid + 1;
+        }
+      }
+
+      return answer;
+    }
+
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    console.log(solution(3, arr));
+  </script>
+</body>
+
+</html>
