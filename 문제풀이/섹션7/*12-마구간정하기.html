@@ -7,10 +7,37 @@
 
 <body>
   <script>
+    // 선생님 풀이
+    function count(stable, dist) {
+      let cnt = 1;
+      let ep = stable[0];
+
+      for (let i = 1; i < stable.length; i++) {
+        if (stable[i] - ep >= dist) {
+          cnt++;
+          ep = stable[i];
+        }
+      }
+
+      return cnt;
+    }
+
     function solution(c, stable) {
-      let answer;
-      let sorted = [...stable].sort();
-      console.log(sorted);
+      let answer = 0;
+      let sorted = [...stable].sort((prev, next) => prev - next);
+      let lt = 1;
+      let rt = sorted[sorted.length - 1];
+
+      while (lt <= rt) {
+        let mid = Math.ceil((lt + rt) / 2);
+        if (count(sorted, mid) >= c) {
+          answer = mid;
+          lt = mid + 1;
+        } else {
+          rt = mid - 1;
+        }
+      }
+
       return answer;
     }
 
