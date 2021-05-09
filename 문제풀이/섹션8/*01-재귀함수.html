@@ -7,11 +7,13 @@
 
 <body>
   <script>
+    // 재귀함수 돌아가는 원리는 스택이다. 
+    // 자기 자신을 호출하는 함수가 재귀함수다.
+    // 재귀함수는 기본적으로 무한루프이기 때문에 종료 조건을 먼저 설정해줘야 한다.
     function solution(n) {
       if (n <= 0) return;
+      solution(n - 1);
       console.log(n);
-      n = n - 1;
-      solution(n);
     }
 
     solution(3);
