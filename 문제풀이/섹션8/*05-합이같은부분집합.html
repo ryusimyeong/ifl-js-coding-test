@@ -10,10 +10,24 @@
     function solution(arr) {
       let answer = 'NO';
       let flag = false;
+      let total = arr.reduce((acc, v) => acc + v, 0);
+      let n = arr.length; // end point
 
-      function DFS(n) {
-
+      function DFS(L, sum) {
+        if (flag) return;
+        if (L === n) {
+          // 합이 같은지 확인
+          if ((total - sum) === sum) {
+            answer = 'YES';
+            flag = true; // 불필요한 반복을 제거하기 위한 flag
+          }
+        } else {
+          DFS(L + 1, sum + arr[L]); // 부분집합에 사용하는 branch
+          DFS(L + 1, sum);  // 부분집합에 사용하지 않는 branch
+        }
       }
+      DFS(0, 0);
+
       return answer;
     }
 
