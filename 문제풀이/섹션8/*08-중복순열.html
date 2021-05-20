@@ -8,15 +8,21 @@
 <body>
   <script>
     function solution(n, m) {
+      // 반복문의 깊이가 변수에 의해 변해야 할 때 재귀함수를 사용한다.
       let answer = [];
+      let temp = Array.from({ length: m }, () => 0);
 
-      for (let i = 1; i <= n; i++) {
-        for (let j = 1; j <= n; j++) {
-          console.log(i, j);
-          answer.push([i, j]);
+      function DFS(L) {
+        if (L === m) {
+          answer.push([...temp]);
+        } else {
+          for (let i = 1; i <= n; i++) {
+            temp[L] = i;
+            DFS(L + 1);
+          }
         }
       }
-      answer = answer.length;
+      DFS(0)
 
       return answer;
     }
