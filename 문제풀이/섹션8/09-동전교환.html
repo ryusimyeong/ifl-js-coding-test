@@ -8,6 +8,8 @@
 <body>
   <script>
     function solution(m, arr) {
+      /**
+      // 내 풀이
       let answer = 0;
       const coins = [...arr].sort((prev, next) => next - prev);
 
@@ -19,6 +21,25 @@
           answer++;
         }
       }
+      /*/
+      // 선생님 풀이
+      let answer = Number.MAX_SAFE_INTEGER;
+      let n = arr.length;
+      const DFS = (L, sum) => {
+        if (sum > m) return; // 무한루프 방지
+        if (answer <= L) return; // 최적화
+
+        if (sum === m) {
+          console.log(L, sum);
+          answer = Math.min(answer, L);
+        } else {
+          for (let i = 0; i < n; i++) {
+            DFS(L + 1, sum + arr[i]);
+          }
+        }
+      }
+      DFS(0, 0)
+      /**/
 
       return answer;
     }
