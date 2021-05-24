@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(m, arr) {
+      /**
+      // 내 풀이
+      let answer = [];
+      let aliasArr = [...arr];
+      let tempArr = Array.from({ length: m }, () => 0);
+
+      (function DFS(L, idx) {
+        if (L === m) {
+          answer.push([...tempArr]);
+          aliasArr[idx] = arr[idx]; // 되돌리기
+
+          if (idx === arr.length - 1) {
+            aliasArr = [...arr]; // 마지막일 때 싹 다 되돌리기
+          }
+          console.log(answer);
+        } else {
+          for (let i = 0; i < arr.length; i++) {
+            if (aliasArr[i] === -1) continue;
+
+            tempArr[L] = aliasArr[i];
+            aliasArr[i] = -1;
+            DFS(L + 1, i);
+          }
+        }
+      })(0, 0)
+      /*/
+      let answer = [];
+      let n = arr.length;
+      let checkArr = Array.from({ length: n }, () => 0); // 사용여부 확인하는 배열
+      let tempArr = Array.from({ length: m }, () => 0);
+
+      (function DFS(L) {
+        if (L === m) {
+          answer.push([...tempArr]);
+        } else {
+          for (let i = 0; i < n; i++) {
+            if (checkArr[i]) continue; // 해당 인덱스의 값을 사용했다면 continue
+
+            checkArr[i] = 1; // 사용 체크
+            tempArr[L] = arr[i]; // 값 넣어주기
+            DFS(L + 1); // 다음 레벨 이동
+            checkArr[i] = 0; // 레벨 복귀 시 사용 체크 풀어주기
+          }
+        }
+      })(0)
+      /**/
+
+      return answer;
+    }
+
+    console.log(solution(2, [3, 6, 9]));
+    console.log(solution(2, [3, 6, 9, 5]));
+  </script>
+</body>
+
+</html>
