@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    // 선생님 풀이
+
+
+    function solution(n, r) {
+      let answer;
+      let dy = Array.from(Array(n + 1), () => Array(r + 1).fill(0));
+
+      function DFS(n, r) {
+        if (dy[n][r] > 0) return dy[n][r]; // 메모이제이션
+        if (n === r || r === 0) return 1; // 재귀 종료 조건
+        return dy[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r);
+      }
+
+      answer = DFS(n, r);
+      return answer;
+    }
+
+    console.log(solution(5, 3));
+  </script>
+</body>
+
+</html>
