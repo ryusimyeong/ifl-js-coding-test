@@ -10,12 +10,17 @@
     function solution(k, arr, m) {
       // 선생님 풀이
       let answer = 0;
+      let temp = Array.from({ length: k });
 
       (function DFS(L, s, sum) {
         if (L === k) {
-          if (sum % m === 0) answer++;
+          if (sum % m === 0) {
+            answer++;
+          }
+          console.log(sum, temp)
         } else {
           for (let i = s; i < arr.length; i++) {
+            temp[L] = arr[i];
             DFS(L + 1, i + 1, sum + arr[i]);
           }
         }

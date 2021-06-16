@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, m) {
+      // 선생님 풀이
+      // 원리를 이해하고, 그냥 외우자
+      let answer = [];
+      let temp = Array.from({ length: m }, () => 0);
+
+      (function DFS(L, s) {
+        if (L === m) {
+          answer.push([...temp]);
+        } else {
+          for (let i = s; i <= n; i++) {
+            temp[L] = i;
+            DFS(L + 1, i + 1); // i는 뽑는 숫자
+          }
+        }
+      })(0, 1);
+
+      return answer;
+    }
+
+    console.log(solution(4, 2));
+  </script>
+</body>
+
+</html>
