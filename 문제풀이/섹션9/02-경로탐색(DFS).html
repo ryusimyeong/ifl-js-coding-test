@@ -7,21 +7,32 @@
 
 <body>
   <script>
+
     function solution(n, arr) {
       let answer = 0;
-      const graph = [];
-      for (let i = 0; i < n; i++) {
-        graph.push(Array.from({ length: n }, () => 0));
+      const graph = Array.from({ length: n }, () => Array(n).fill(0));
+      const checkArr = Array.from({ length: n }, () => 0);
+
+      for (const [a, b] of arr) {
+        graph[a - 1][b - 1] = 1;
       }
 
-      for (let i = 0; i < arr.length; i++) {
-        graph[arr[i][0] - 1][arr[i][1] - 1] = 1;
-      }
+      (function DFS(node) {
+        checkArr[node] = 1;
 
+        if (node === n - 1) {
+          answer++;
+        } else {
+          for (let i = 0; i < n; i++) {
+            if (!graph[node][i]) continue;
+            if (checkArr[i]) continue;
 
-
-
-      console.log(graph)
+            checkArr[i] = 1;
+            DFS(i);
+            checkArr[i] = 0;
+          }
+        }
+      })(0);
 
       return answer;
     }
