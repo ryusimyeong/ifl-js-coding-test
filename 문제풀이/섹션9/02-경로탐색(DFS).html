@@ -8,7 +8,21 @@
 <body>
   <script>
     function solution(n, arr) {
-      let answer;
+      let answer = 0;
+      const graph = [];
+      for (let i = 0; i < n; i++) {
+        graph.push(Array.from({ length: n }, () => 0));
+      }
+
+      for (let i = 0; i < arr.length; i++) {
+        graph[arr[i][0] - 1][arr[i][1] - 1] = 1;
+      }
+
+
+
+
+      console.log(graph)
+
       return answer;
     }
 
