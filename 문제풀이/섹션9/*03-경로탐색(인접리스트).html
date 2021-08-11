@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    // 왜 인접 리스트로 풀어야 할까?
+    // 정점(노드)의 개수가 많아지면 인접 행렬은 공간복잡도, 시간복잡도가 너무 높아지기 때문이다.
+    function solution(n, arr) {
+      let answer = 0;
+
+      const graph = Array.from({ length: n }, () => Array());
+      const checkArr = Array.from({ length: n });
+
+      for (const [a, b] of arr) {
+        graph[a - 1].push(b - 1);
+      }
+
+      (function DFS(node) {
+        checkArr[node] = 1;
+
+        if (node === n - 1) {
+          answer++;
+        } else {
+          for (let i = 0; i < graph[node].length; i++) {
+            const targetIndex = graph[node][i];
+
+            if (!checkArr[targetIndex]) {
+              checkArr[targetIndex] = 1;
+              DFS(targetIndex);
+              checkArr[targetIndex] = 0;
+            }
+          }
+        }
+      })(0);
+
+      return answer;
+    }
+
+    let arr = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [2, 5], [3, 4], [4, 2], [4, 5]];
+    console.log(solution(5, arr));
+  </script>
+</body>
+
+</html>

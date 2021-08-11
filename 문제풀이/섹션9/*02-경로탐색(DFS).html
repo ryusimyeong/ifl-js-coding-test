@@ -7,7 +7,8 @@
 
 <body>
   <script>
-
+    // 왜 인접 리스트로 풀어야 할까?
+    // 정점(노드)의 개수가 많아지면 인접 행렬은 공간복잡도, 시간복잡도가 너무 높아지기 때문이다.
     function solution(n, arr) {
       let answer = 0;
       const graph = Array.from({ length: n }, () => Array(n).fill(0));
