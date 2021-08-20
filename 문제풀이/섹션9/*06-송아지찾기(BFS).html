@@ -9,7 +9,8 @@
   <script>
     function solution(s, e) {
       let answer = 0;
-
+      /**
+      // distance 배열 이용
       const checkArr = Array.from({ length: 10001 }, () => 0); // 중복 탐색 방지
       const distanceArr = Array.from({ length: 10001 }, () => 0); // 거리값 확인용 배열
       const queue = [];
@@ -32,6 +33,32 @@
           }
         }
       }
+      /*/
+      // level 이용
+      const checkArr = Array.from({ length: 10001 }, () => 0);
+      const queue = [];
+      checkArr[s] = 1;
+      queue.push(s);
+
+      while (queue.length) {
+        const length = queue.length;
+
+        for (let i = 0; i < length; i++) {
+          const point = queue.shift();
+          if (point === e) return answer;
+
+          for (const nextPoint of [point - 1, point + 1, point + 5]) {
+            if (nextPoint === e) return answer + 1;
+
+            if (1 <= nextPoint && nextPoint <= 10000 && !checkArr[nextPoint]) {
+              checkArr[nextPoint] = 1;
+              queue.push(nextPoint);
+            }
+          }
+        }
+        answer++;
+      }
+      /**/
 
       return answer;
     }
