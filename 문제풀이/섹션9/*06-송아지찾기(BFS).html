@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(s, e) {
+      let answer = 0;
+
+      const checkArr = Array.from({ length: 10001 }, () => 0); // 중복 탐색 방지
+      const distanceArr = Array.from({ length: 10001 }, () => 0); // 거리값 확인용 배열
+      const queue = [];
+      // 시작점 초기화
+      checkArr[s] = 1;
+      queue.push(s);
+      distanceArr[s] = 0;
+
+      while (queue.length) {
+        const point = queue.shift();
+        if (point === e) return distanceArr[point];
+
+        for (const nextPoint of [point - 1, point + 1, point + 5]) {
+          if (nextPoint === e) return distanceArr[point] + 1;
+
+          if (1 <= nextPoint && nextPoint <= 10000 && !checkArr[nextPoint]) {
+            checkArr[nextPoint] = 1;
+            queue.push(nextPoint);
+            distanceArr[nextPoint] = distanceArr[point] + 1;
+          }
+        }
+      }
+
+      return answer;
+    }
+
+    console.log(solution(5, 14));
+    console.log(solution(8, 3));
+  </script>
+</body>
+
+</html>
