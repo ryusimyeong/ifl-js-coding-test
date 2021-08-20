@@ -7,8 +7,24 @@
 
 <body>
   <script>
+    // BFS는 언제 사용할까?
+    // 상태 트리: 예) 출발지점에서 어떤 도착지점으로 가는데 최단거리가 무엇인가?
+    // 최단거리를 쓸 때 사용한다.
     function solution() {
-      let answer;
+      let answer = '';
+      const queue = [];
+      queue.push(1); // 출발지점
+
+      while (queue.length) {
+        const value = queue.shift();
+        answer += value + ' ';
+
+        for (const nextValue of [value * 2, value * 2 + 1]) {
+          if (nextValue > 7) continue;
+          queue.push(nextValue);
+        }
+      }
+
       return answer;
     }
 
