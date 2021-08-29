@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(m, coin) {
+      let answer = 0;
+      /**
+      // 내 풀이 
+      const coinAlias = [...coin];
+      coinAlias.sort((prev, next) => next - prev);
+
+      for (const c of coinAlias) {
+        if (m === 0) break;
+
+        while (m - c >= 0) {
+          m = m - c;
+          answer++;
+        }
+      }
+    });
+    /*/
+      // 냅색 알고리즘
+      const dy = Array.from({ length: m + 1 }, () => 1000)
+      // dy[i]에서 i는 거슬러줘야 할 금액, value는 거슬러줘야하는 동전의 최소 개수
+      dy[0] = 0;
+
+      for (let i = 0; i < coin.length; i++) {
+        for (let j = coin[i]; j <= m; j++) {
+          // 최소개수를 적용
+          dy[j] = Math.min(dy[j], dy[j - coin[i]] + 1);
+        }
+      }
+      answer = dy[m];
+      /**/
+      return answer;
+    }
+
+    let arr = [1, 2, 5, 3];
+    console.log(solution(15, arr));
+    console.log(solution(16, arr));
+    console.log(solution(27, arr));
+  </script>
+</body>
+
+</html>
