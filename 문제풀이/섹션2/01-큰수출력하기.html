@@ -1,27 +1,21 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        answer = arr.filter(
+          (number, index) => !index || number > arr[index - 1] // 첫 번째 수는 무조건 출력(!index)
+        );
 
-<body>
-  <script>
-    function solution(arr) {
-      let answer = [];
-
-      for (let i = 0; i < arr.length; i++) {
-        if (i === 0 || arr[i - 1] < arr[i]) {
-          answer.push(arr[i])
-        }
+        return answer;
       }
 
-      return answer;
-    }
-
-    let arr = [7, 3, 9, 5, 6, 12];
-    console.log(solution(arr));
-  </script>
-</body>
-
+      console.log(solution([7, 3, 9, 5, 6, 12]));
+    </script>
+  </body>
 </html>
