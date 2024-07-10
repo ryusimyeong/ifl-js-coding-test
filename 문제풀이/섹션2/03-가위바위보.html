@@ -1,56 +1,47 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b) {
+        let answer = '';
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
-
-<body>
-  <script>
-    function solution(a, b) {
-      let answer = "";
-      /**/
-      // 내 풀이
-      for (let i = 0; i < a.length; i++) {
-        const diff = a[i] - b[i];
-        switch (diff) {
-          case -2:
-            answer += 'A';
-            break;
-          case 1:
-            answer += 'A';
-            break;
-          case -1:
-            answer += 'B';
-            break;
-          case 2:
-            answer += 'B';
-            break;
-          default:
+        for (let i = 0; i < a.length; i++) {
+          // a와 b가 같다면 무승부
+          if (a[i] === b[i]) {
             answer += 'D';
-            break;
+            continue;
+          }
+
+          switch (a[i]) {
+            // a가 가위
+            case 1:
+              // b가 바위면 b 승 아니면 a 승
+              b[i] === 2 ? (answer += 'B') : (answer += 'A');
+              break;
+
+            // a가 바위
+            case 2:
+              // b가 보면 b 승 아니면 a 승
+              b[i] === 3 ? (answer += 'B') : (answer += 'A');
+              break;
+
+            // a가 보
+            default:
+              // b가 가위면 b 승 아니면 a 승
+              b[i] === 1 ? (answer += 'B') : (answer += 'A');
+              break;
+          }
         }
+
+        return answer;
       }
-      /*/
-      // 기준을 잘 잡아라
-      // 한 쪽의 경우에서만 생각한다.
-      // 비기는 경우, a가 이기는 경우, 그리고 나머지는 b가 이기는 경우
-      for (let i = 0; i < a.length; i++) {
-        if (a[i] === b[i]) answer += 'D';
-        else if (a[i] === 1 && b[i] === 3) answer += 'A';
-        else if (a[i] === 2 && b[i] === 1) answer += 'A';
-        else if (a[i] === 3 && b[i] === 2) answer += 'A';
-        else answer += 'B'
-      }
-      /**/
 
-      return answer;
-    }
-
-    let a = [2, 3, 3, 1, 3];
-    let b = [1, 1, 2, 2, 3];
-    console.log(solution(a, b));
-  </script>
-</body>
-
+      let a = [2, 3, 3, 1, 3];
+      let b = [1, 1, 2, 2, 3];
+      console.log(solution(a, b));
+    </script>
+  </body>
 </html>
