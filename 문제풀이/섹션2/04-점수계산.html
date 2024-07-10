@@ -1,43 +1,30 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        let score = 1;
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        for (let i = 0; i < arr.length; i++) {
+          if (!arr[i]) {
+            // arr[i]이 0이면(틀리면) 누적되던 점수 1로 초기화
+            score = 1;
+          } else {
+            // arr[i]이 맞으면 점수 추가 후 누적점수 상승
+            answer += score;
+            score++;
+          }
+        }
 
-<body>
-  <script>
-    function solution(arr) {
-      let answer = 0;
-      let combo = 0;
-      /**
-      // 내 풀이
-      arr.forEach(v => {
-        if (v === 1) {
-          combo++;
-        } else {
-          combo = 0;
-        }
-        answer += combo;
-      });
-      /*/
-      // 연속으로 맞춘 개수만큼 추가되는 것
-      for (let v of arr) {
-        if (v === 1) {
-          combo++;
-          answer += combo;
-        } else {
-          combo = 0;
-        }
+        return answer;
       }
-      /**/
 
-      return answer;
-    }
-
-    let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
-    console.log(solution(arr));
-  </script>
-</body>
-
+      console.log(solution([1, 0, 1, 1, 1, 0, 0, 1, 1, 0])); // 10
+      console.log(solution([1, 1, 1, 1, 1, 0, 0, 1, 1, 0])); // 18
+    </script>
+  </body>
 </html>
