@@ -1,26 +1,25 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        /**/
+        // filter와 indexOf 사용
+        answer = s.filter((word, index) => s.indexOf(word) === index);
+        /*/
+        // Set 활용
+        answer = [...new Set(s)];
+        /**/
 
-<body>
-  <script>
-    function solution(s) {
-      let answer;
-      /**
-      // Set을 이용한 중복 제거
-      answer = [...new Set(s)];
-      /*/
-      answer = s.filter((v, i) => s.indexOf(v) === i);
-      /**/
-      return answer;
-    }
-    let str = ["good", "time", "good", "time", "student"];
-
-    console.log(solution(str));
-  </script>
-</body>
-
+        return answer;
+      }
+      let str = ['good', 'time', 'good', 'time', 'student'];
+      console.log(solution(str));
+    </script>
+  </body>
 </html>

@@ -1,30 +1,22 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(n){
-                let answer = 0;
-                // 함수형으로 풀면 이렇다. 반복이 두 개가 있어서 그닥 좋아 보이지는 않음
-                // answer = new Array(n)
-                //   .fill(1)
-                //   .map((v, i) => v + i)
-                //   .reduce((acc, v) => acc + v, 0);
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = 0;
+        // 입력된 n을 길이로 하는 배열 생성, 인덱스를 활용해 숫자 채우고 reduce로 누산
+        answer = Array.from({ length: n }, (number, i) => i + 1).reduce(
+          (acc, number) => number + acc
+        );
 
-                // 매우 기본적인 반복문을 이용한 풀이
-                // for (let i = 1; i <= n; i++) {
-                //   answer += i;
-                // }
+        return answer;
+      }
 
-                // 시간복잡도가 O(1)인 제일 좋은 방법으로 보인다.
-                answer = n * (n + 1) / 2;
-
-                return answer;
-            }
-
-            console.log(solution(6));
-        </script>
-    </body>
+      console.log(solution(6));
+      console.log(solution(10));
+    </script>
+  </body>
 </html>

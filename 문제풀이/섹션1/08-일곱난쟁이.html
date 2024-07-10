@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer;
+        const candidateList = [];
+        const sum = arr.reduce((acc, height) => acc + height, 0); // 9명 난쟁이들의 키 총합
+
+        // 9명 중 7명만 선택하는 모든 경우의 수
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            // 키의 합이 100을 만족하는 경우만 남김
+            if (sum - arr[i] - arr[j] === 100) {
+              const arrAlias = [...arr];
+
+              // 뒤 인덱스부터 제거해야 함
+              arrAlias.splice(j, 1);
+              arrAlias.splice(i, 1);
+
+              candidateList.push(arrAlias);
+            }
+          }
+        }
+
+        // 임의의 수 구하기
+        const randomIndex = Math.floor(Math.random() * candidateList.length);
+        answer = candidateList[randomIndex];
+
+        return answer;
+      }
+
+      console.log(solution([20, 7, 23, 19, 10, 15, 25, 8, 13]));
+      console.log(solution([22, 7, 21, 19, 10, 15, 25, 8, 13]));
+    </script>
+  </body>
+</html>

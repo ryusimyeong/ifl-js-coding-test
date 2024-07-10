@@ -1,26 +1,22 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '';
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        const maxLength = Math.max(...s.map((string) => string.length));
+        answer = s.find((string) => string.length === maxLength);
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = "";
-
-      for (let word of s) {
-        if (word.length > answer.length) {
-          answer = word;
-        }
+        return answer;
       }
 
-      return answer;
-    }
-    let str = ["teacher", "time", "student", "beautiful", "good"];
-    console.log(solution(str));
-  </script>
-</body>
-
+      console.log(
+        solution(['teacher', 'time', 'student', 'beautiful', 'good'])
+      );
+    </script>
+  </body>
 </html>

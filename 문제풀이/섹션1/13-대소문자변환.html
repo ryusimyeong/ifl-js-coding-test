@@ -1,32 +1,31 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '';
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        answer = s
+          .split('')
+          .map((letter) => {
+            if (letter.toUpperCase() === letter) {
+              letter = letter.toLowerCase();
+            } else if (letter.toLowerCase() === letter) {
+              letter = letter.toUpperCase();
+            }
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = '';
+            return letter;
+          })
+          .join('');
 
-      for (let l of s) {
-        const n = l.charCodeAt();
-        // 대문자면 소문자로 변환
-        if (65 <= n && n <= 90) {
-          l = l.toLowerCase();
-          // 소문자면 대문자로 변환
-        } else if (97 <= n && n <= 122) {
-          l = l.toUpperCase();
-        }
-        answer += l;
+        return answer;
       }
 
-      return answer;
-    }
-
-    console.log(solution("StuDY"));
-  </script>
-</body>
-
+      console.log(solution('StuDY'));
+      console.log(solution('tODAy'));
+    </script>
+  </body>
 </html>

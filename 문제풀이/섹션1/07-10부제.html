@@ -1,37 +1,27 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        /**
+        answer = arr
+          .map((number) => `${number}`[1]) // 차량번호 중 일의 자리 숫자. 인덱싱을 위해 문자열 변환
+          .filter((stringNumber) => day === +stringNumber).length; // 일의 자리 숫자와 주어진 day가 같은지 확인.
+        /*/
+        // 어떤 숫자든 10으로 나누면 나머지는 일의 자리숫자다.
+        answer = arr.filter((number) => number % 10 === day).length;
+        /**/
 
-<body>
-  <script>
-    function solution(day, arr) {
-      let answer = 0;
-      /**
-      // 내 풀이
-      // 1의 자리를 식별해야 하므로 string으로 형변환한 뒤, 반복을 돌며 day와 같은 자동차 만큼 count한다
-      arr = arr.map(n => n + '').forEach(n => {
-        if (+n[1] === day) answer++;
-      });
-      /*/
-      // 강사님 풀이
-      // ======= tips =======
-      // 10진수에서 10으로 나누었을 때 나머지는 1의 자리의 수가 된다.
-      // 100으로 나누면 10의 자리, 1의 자리 숫자를 구할 수 있다.
-      // 굳이 string으로 형 변환하는 과정을 거치지 않아도 된다.
-      arr.forEach(n => {
-        if (n % 10 === day) answer++;
-      });
-      /**/
+        return answer;
+      }
 
-      return answer;
-    }
-
-    console.log(solution(3, [25, 23, 11, 47, 53, 17, 33]));
-    console.log(solution(0, [12, 20, 54, 30, 87, 91, 30]));
-  </script>
-</body>
-
+      console.log(solution(3, [25, 23, 11, 47, 53, 17, 33]));
+      console.log(solution(0, [12, 20, 54, 30, 87, 91, 30]));
+    </script>
+  </body>
 </html>

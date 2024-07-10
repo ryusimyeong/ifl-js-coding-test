@@ -1,19 +1,20 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(n){
-                let answer;
-                // 나머지가 있으면 1다스를 더 써야 함
-                // 소수점이 있으면 올림시켜 버린다.
-                answer = Math.ceil(n / 12);
-                return answer;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer;
+        // 학생 수를 12로 나눈 뒤, 나머지가 존재하면 한 다스가 더 필요하므로 올림 처리.
+        answer = Math.ceil(n / 12);
 
-            console.log(solution(178));
-        </script>
-    </body>
+        return answer;
+      }
+
+      console.log(solution(25));
+      console.log(solution(178));
+    </script>
+  </body>
 </html>

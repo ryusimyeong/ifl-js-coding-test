@@ -1,58 +1,21 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '';
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        answer = s.replaceAll('A', '#');
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = "";
-      /**
-      // 내 풀이
-      answer = s.split('').map(v => {
-        if (v === 'A') v = '#';
-
-        return v;
-      });
-      answer = answer.join('');
-      /*/
-      // 강사님 풀이
-      // string도 반복문 돌 수 있다.
-      for (let v of s) {
-        if (v === 'A') answer += '#';
-        else answer += v;
+        return answer;
       }
-      /**/
-      return answer;
-    }
 
-    console.log(solution("BANANA"));
-  </script>
-</body>
-
-</html>
-
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
-
-<body>
-  <script>
-    function solution(s) {
-      let answer = s;
-      // replace는 값을 교체된 값을 반환한다.
-      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-      answer = answer.replace(/A/g, '#');
-      return answer;
-    }
-
-    console.log(solution("BANANA"));
-  </script>
-</body>
-
+      console.log(solution('BANANA'));
+      console.log(solution('APPLE'));
+      console.log(solution('TMAX'));
+    </script>
+  </body>
 </html>

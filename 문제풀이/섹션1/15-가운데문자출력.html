@@ -1,32 +1,23 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const quotient = Math.floor(s.length / 2);
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        return s.length % 2
+          ? `${s[quotient]}`
+          : `${s[quotient - 1]}${s[quotient]}`;
+      }
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = '';
-      const mid = Math.floor(s.length / 2);
-      /**
-      // 길이가 홀수일 때 ? 아닐 때 :
-      // .substring(여기서부터, 여기 전까지)
-      answer = s.length % 2 === 1
-        ? answer = s.substring(mid, mid + 1)
-        : answer = s.substring(mid - 1, mid + 1)
-      /*/
-      // .substr(여기서부터, 몇 개)
-      answer = s.length % 2 === 1
-        ? answer = s.substr(mid, 1)
-        : answer = s.substr(mid - 1, 2)
-      /**/
-      return answer;
-    }
-    console.log(solution("study"));
-    console.log(solution("good"));
-  </script>
-</body>
-
+      console.log(solution('study'));
+      console.log(solution('good'));
+      console.log(solution('test'));
+      console.log(solution('length'));
+      console.log(solution('simyeong'));
+    </script>
+  </body>
 </html>

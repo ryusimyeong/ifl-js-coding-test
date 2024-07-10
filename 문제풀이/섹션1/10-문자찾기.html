@@ -1,49 +1,26 @@
-<!-- <html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = 0;
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        /**
+        // 순회하면서 찾기
+        answer = s.split('').filter((letter) => letter === t).length;
+        /*/
+        // split함수로 나눠지는 개수로 찾기
+        answer = s.split(t).length - 1;
+        /**/
 
-<body>
-  <script>
-    function solution(s, t) {
-      let answer = 0;
-
-      for (let letter of s) {
-        if (letter === t) answer++;
+        return answer;
       }
 
-      return answer;
-    }
-
-    let str = "COMPUTERPROGRAMMING";
-    console.log(solution(str, 'R'));
-  </script>
-</body>
-
-</html> -->
-
-
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
-
-<body>
-  <script>
-    function solution(s, t) {
-      // t로 구분하여 나눠주면 t의 개수 - 1을 길이로 갖는 배열이 생성된다.
-      let answer = s.split(t).length - 1;
-
-      return answer;
-    }
-
-    let str = "COMPUTERPROGRAMMING";
-    console.log(solution(str, 'R'));
-  </script>
-</body>
-
+      console.log(solution('COMPUTERPROGRAMMING', 'R'));
+      console.log(solution('ABCABCACCCA', 'A'));
+    </script>
+  </body>
 </html>

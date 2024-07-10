@@ -1,44 +1,27 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(arr){
-                /**/
-                let odds = [...arr];
-                let sum = 0;
-                let min = 0;
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 홀수인 숫자 배열
+        const oddNumberList = arr.filter((number) => number % 2);
 
-                // 홀수인 것을 구하고
-                odds = odds.filter(n => n % 2 !== 0);                
-                // 그것들의 합을 구하고
-                sum = odds.reduce((acc, v) => acc + v, 0);
-                // 그것들 중 최소값을 구한다.
-                min = Math.min(...odds);
-                /*/
-                let sum = 0;
-                let min = Number.MAX_SAFE_INTEGER; // 통상 최소값은 가장 큰 수로 초기화해준다.
+        // 홀수인 숫자들 총합
+        const sum = oddNumberList.reduce(
+          (acc, oddNumber) => oddNumber + acc,
+          0
+        );
 
-                for (n of arr) {
-                  // 성능 최적화를 위해 홀수가 아닌 수는 넘어간다.
-                  if (n % 2 !== 1) continue;
-                  
-                  // 축약형을 사용해야 하는 이유는 연산자 개수가 줄어서 성능이 좋아진다.
-                  // sum = sum + n;
-                  sum += n;
+        // 홀수인 숫자들 중 최소값
+        const min = Math.min(...oddNumberList);
 
-                  if (n < min) {
-                    min = n;
-                  }
-                }
-                /**/
-                return `합: ${sum} \n최소값: ${min}`;
-            }
-            
-            arr=[12, 77, 38, 41, 53, 92, 85];
-            console.log(solution(arr));
-        </script>
-    </body>
+        return [sum, min];
+      }
+
+      console.log(solution([12, 77, 38, 41, 53, 92, 85]));
+    </script>
+  </body>
 </html>

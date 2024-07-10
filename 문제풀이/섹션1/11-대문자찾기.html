@@ -1,40 +1,30 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
-
-<body>
-  <script>
-    function solution(s) {
-      let answer = 0;
-      /**
-      // .toUpperCase()는 대문자로 바꾼 값을 반환 
-      // .toLowerCase()는 소문자로 바꾼 값을 반환
-      for (let letter of s) {
-        if (letter === letter.toUpperCase()) {
-          answer++;
+        /**
+        for (const letter of s) {
+          if (letter.toUpperCase() === letter) {
+            answer++;
+          }
         }
+        /*/
+        answer = s
+          .split('')
+          .filter((letter) => letter === letter.toUpperCase()).length;
+        /**/
+
+        return answer;
       }
-      /*/
-      // 아스키코드로 푸는 법
-      for (let letter of s) {
-        // .charCodeAt()는 해당 문자열의 아스키 코드를 반환한다.
-        // 암기: 영문 대소문자 아스키코드는 외워두자. 
-        // 대문자: 65(A)~90(Z) 소문자: 97(a)~122(z)
-        // 대소문자는 32 차이가 난다. 즉, a - A === 32 | b - B === 32
-        let ASCII = letter.charCodeAt();
-        if (65 <= ASCII && ASCII <= 90) answer++;
-      }
-      /**/
 
-      return answer;
-    }
-
-    let str = "KoreaTimeGood";
-    console.log(solution(str));
-  </script>
-</body>
-
+      console.log(solution('KoreaTimeGood'));
+      console.log(solution('TeStSTRING'));
+    </script>
+  </body>
 </html>
