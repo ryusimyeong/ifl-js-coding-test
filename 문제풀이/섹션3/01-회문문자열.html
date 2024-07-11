@@ -1,38 +1,27 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 'YES';
+        let length = s.length;
+        s = s.toLowerCase();
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        for (let i = 0; i < length; i++) {
+          if (s[i] === s[length - i - 1]) return;
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = "YES";
-      // 대소문자 구분 없기 때문에 소문자 혹은 대문자로 바꿔준다.
-      s = s.toLowerCase();
-      /**
-      let n = Math.floor(s.length / 2)
-      let end = s.length - 1;
-      for (let i = 0; i < n; i++) {
-        if (s[i] !== s[end - i]) {
-          answer = "NO";
-          break;
+          answer = 'NO';
         }
+
+        return answer;
       }
-      /*/
-      // reverse 메소드를 이용해서 풀 수도 있다.
-      if (s !== Array.from(s).reverse().join('')) return 'NO'
 
-      /**/
-      return answer;
-    }
-
-    console.log(solution('gooG'))
-    console.log(solution('stad'))
-  </script>
-
-
-</body>
-
+      console.log(solution('goooG'));
+      console.log(solution('gtG'));
+      console.log(solution('gtadsf'));
+    </script>
+  </body>
 </html>
