@@ -9,7 +9,7 @@
         let answer = [];
 
         answer = arr.filter(
-          (number, index) => !index || number > arr[index - 1] // 첫 번째 수는 무조건 출력(!index)
+          (number, index) => index === 0 || number > arr[index - 1] // 첫 번째 수는 무조건 출력
         );
 
         return answer;

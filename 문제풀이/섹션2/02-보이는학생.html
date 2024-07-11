@@ -6,16 +6,21 @@
   <body>
     <script>
       function solution(arr) {
-        let answer = 0;
+        let answer = 1; // 첫 번째 학생은 무조건 보임
+        let max = arr[0]; // 첫 번째 학생 키로 초기화
 
-        answer = arr.filter(
-          (height, index) => !index || height > arr[index - 1]
-        ).length;
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > max) {
+            max = arr[i];
+            answer++;
+          }
+        }
 
         return answer;
       }
 
       console.log(solution([130, 135, 148, 140, 145, 150, 150, 153]));
+      console.log(solution([150, 130, 135, 148, 140, 145, 150, 153]));
     </script>
   </body>
 </html>
