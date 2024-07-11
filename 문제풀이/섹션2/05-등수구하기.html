@@ -1,43 +1,36 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = Array.from({ length: arr.length }).fill(0);
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        for (let i = 0; i < arr.length; i++) {
+          let count = 1;
 
-<body>
-  <script>
-    function solution(arr) {
-      /**
-      let answer = [];
-      // 내 풀이
-      // 값 복사
-      let alias = [...arr];
-      // 높은 점수 순으로 정렬
-      alias.sort((p, n) => n - p);
+          for (let j = 0; j < arr.length; j++) {
+            // 본인 비교 스킵
+            if (i === j) {
+              continue;
+            }
 
-      arr.forEach(n => {
-        const rank = alias.findIndex(v => v === n) + 1
-        answer.push(rank);
-      });
-      /*/
-      let answer = Array.from({ length: arr.length }, () => 1);
+            // 자신보다 큰 게 있는지 확인
+            if (arr[i] < arr[j]) {
+              count++;
+            }
+          }
 
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-          if (arr[j] > arr[i]) answer[i]++;
+          answer[i] = count;
         }
+
+        return answer;
       }
-      /**/
 
-      return answer;
-    }
-
-    let arr = [92, 92, 92, 100, 76];
-    console.log(solution(arr));
-    arr = [87, 89, 92, 100, 76];
-    console.log(solution(arr));
-  </script>
-</body>
-
+      console.log(solution([87, 89, 92, 100, 76]));
+      console.log(solution([87, 89, 100, 100, 76]));
+    </script>
+  </body>
 </html>
