@@ -6,8 +6,9 @@
   <body>
     <script>
       function solution(arr) {
+        /**
         let answer = Array.from({ length: arr.length }).fill(0);
-
+        let count = 1;
         for (let i = 0; i < arr.length; i++) {
           let count = 1;
 
@@ -25,12 +26,25 @@
 
           answer[i] = count;
         }
-
         return answer;
+        /*/
+        // 반복문 중첩 제거 로직
+        const sortedArr = [...arr].sort((prev, next) => next - prev); // 내림차순 정렬
+        const ranking = {}; // 점수와 등급을 매길 딕셔너리
+
+        sortedArr.forEach((score, index) => {
+          if (score === sortedArr[index - 1]) return; // 전 점수와 같으면 넘어간다.
+
+          ranking[score] = index + 1; // 내림차순 정렬된 배열에서 인덱스 + 1이 곧 등수
+        });
+
+        return arr.map((score) => ranking[score]);
+        /**/
       }
 
       console.log(solution([87, 89, 92, 100, 76]));
       console.log(solution([87, 89, 100, 100, 76]));
+      console.log(solution([87, 87, 87, 100, 76]));
     </script>
   </body>
 </html>
