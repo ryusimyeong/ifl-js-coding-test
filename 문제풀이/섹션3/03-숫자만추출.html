@@ -1,34 +1,27 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = '';
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        answer = Number(
+          str
+            .split('')
+            .filter((letter) => {
+              const regex = /[0-9]/;
+              return regex.test(letter);
+            })
+            .join('')
+        );
 
-<body>
-  <script>
-    function solution(str) {
-      /**
-      // 배열로 만든다 -> 숫자형으로 변환했을 때 NaN이 아닌 것들만 모은다. -> string으로 만든다.-> 숫자로 만든다.
-      // number 형태일 때 앞에 있는 0은 자연스럽게 사라진다. parseInt나 Number를 이용하면 된다.
-      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
-      let answer = Number(str.split('').filter(v => !Number.isNaN(v / 1)).join(''));
-      /*/
-      let answer = 0;
-      for (let l of str) {
-        if (!isNaN(l)) {
-          // parseInt나 반복문을 사용하는 게 아닌
-          // 앞의 0들을 제거하는 방법
-          answer = answer * 10 + l / 1;
-        }
+        return answer;
       }
-      /**/
-      return answer;
-    }
 
-    let str = "g0en2T0s8eSoft";
-    console.log(solution(str));
-  </script>
-</body>
-
+      console.log(solution('g0en2T0s8eSoft'));
+    </script>
+  </body>
 </html>
