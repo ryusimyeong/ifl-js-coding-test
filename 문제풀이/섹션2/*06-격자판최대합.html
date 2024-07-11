@@ -6,6 +6,7 @@
   <body>
     <script>
       function solution(arr) {
+        /**
         let answer;
 
         // 가로합 리스트
@@ -29,8 +30,34 @@
             .map((row, index) => row[arr.length - 1 - index])
             .reduce((acc, number) => acc + number, 0),
         ];
-
         answer = Math.max(...rowSumList, ...columnSumList, ...diagonalSumList);
+        /*/
+
+        /**/
+        let answer = 0;
+        let n = arr.length;
+
+        for (let i = 0; i < n; i++) {
+          let rowSum = 0;
+          let columnSum = 0;
+
+          for (let j = 0; j < n; j++) {
+            rowSum += arr[i][j]; // 행의 합. i가 고정. j가 변경
+            columnSum += arr[j][i]; // 열의 합. j가 고정. i가 변경
+          }
+
+          answer = Math.max(answer, rowSum, columnSum);
+        }
+
+        let diagonalSum = 0;
+        let reverseDiagonalSum = 0;
+
+        for (let i = 0; i < n; i++) {
+          diagonalSum += arr[i][i];
+          reverseDiagonalSum += arr[i][n - 1 - i];
+        }
+
+        answer = Math.max(answer, diagonalSum, reverseDiagonalSum);
 
         return answer;
       }
