@@ -7,12 +7,11 @@
     <script>
       function solution(s) {
         let answer = 'YES';
-        const regex = /[a-z]/;
+        const regex = /[^a-z]/g; // 정규표현식에서 ^는 ~이 아닌 것들
 
-        s = s.toLowerCase();
-        s = s.split('').filter((letter) => regex.test(letter));
+        s = s.toLowerCase().replaceAll(regex, '');
 
-        s.forEach((letter, index) => {
+        s.split('').forEach((letter, index) => {
           if (letter === s[s.length - index - 1]) return;
 
           answer = 'NO';
