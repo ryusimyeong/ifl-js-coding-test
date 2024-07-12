@@ -10,11 +10,17 @@
         let length = s.length;
         s = s.toLowerCase();
 
-        for (let i = 0; i < length; i++) {
-          if (s[i] === s[length - i - 1]) return;
+        /**
+        for (let i = 0; i < Math.floor(length / 2); i++) {
+          if (s[i] === s[length - i - 1]) continue;
 
           answer = 'NO';
         }
+        /*/
+        if (s !== s.split('').reverse().join('')) {
+          answer = 'NO';
+        }
+        /**/
 
         return answer;
       }
@@ -22,6 +28,7 @@
       console.log(solution('goooG'));
       console.log(solution('gtG'));
       console.log(solution('gtadsf'));
+      console.log(solution('goot'));
     </script>
   </body>
 </html>

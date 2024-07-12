@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '';
+        let current = s[0];
+        let repeat = 1;
+
+        for (let i = 1; i < s.length; i++) {
+          if (current === s[i]) {
+            repeat++;
+          } else if (current !== s[i] || i === s.length - 1) {
+            answer += `${repeat === 1 ? current : `${current}${repeat}`}`;
+            current = s[i];
+            repeat = 1;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution('KKHSSSSSSSE'));
+      console.log(solution('KSSSHHHHSSSSSSE'));
+    </script>
+  </body>
+</html>

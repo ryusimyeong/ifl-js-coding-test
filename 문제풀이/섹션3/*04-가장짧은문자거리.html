@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        let length = s.length;
+
+        for (let i = 0; i < length; i++) {
+          let right = Number.MAX_SAFE_INTEGER;
+          let left = Number.MAX_SAFE_INTEGER;
+
+          if (s[i] === 'e') {
+            answer[i] = 0;
+            continue;
+          }
+
+          // to right
+          for (let j = i + 1; j < length; j++) {
+            if (s[j] === 'e') {
+              right = j - i;
+              break;
+            }
+          }
+
+          // to left
+          for (let j = i - 1; j >= 0; j--) {
+            if (s[j] === 'e') {
+              left = i - j;
+              break;
+            }
+          }
+
+          answer[i] = Math.min(right, left);
+        }
+
+        return answer;
+      }
+
+      console.log(solution('teachermode', 'e'));
+      console.log(solution('eabcedddeddede', 'e'));
+    </script>
+  </body>
+</html>
