@@ -8,33 +8,34 @@
       function solution(s, t) {
         let answer = [];
         let length = s.length;
+        let right = [];
+        let left = [];
+        let count = 0;
+
+        // to right. 해당 문자열의 왼쪽에 있는 t와의 거리.
+        for (let i = 0; i < length; i++) {
+          if (s[i] === t) {
+            count = 0;
+          } else {
+            count++;
+          }
+
+          right[i] = count;
+        }
+
+        // to right. 해당 문자열의 오른쪽에 있는 t와의 거리.
+        for (let i = length - 1; i >= 0; i--) {
+          if (s[i] === t) {
+            count = 0;
+          } else {
+            count++;
+          }
+
+          left[i] = count;
+        }
 
         for (let i = 0; i < length; i++) {
-          let right = Number.MAX_SAFE_INTEGER;
-          let left = Number.MAX_SAFE_INTEGER;
-
-          if (s[i] === 'e') {
-            answer[i] = 0;
-            continue;
-          }
-
-          // to right
-          for (let j = i + 1; j < length; j++) {
-            if (s[j] === 'e') {
-              right = j - i;
-              break;
-            }
-          }
-
-          // to left
-          for (let j = i - 1; j >= 0; j--) {
-            if (s[j] === 'e') {
-              left = i - j;
-              break;
-            }
-          }
-
-          answer[i] = Math.min(right, left);
+          answer[i] = Math.min(right[i], left[i]);
         }
 
         return answer;
