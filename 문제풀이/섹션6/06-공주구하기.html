@@ -1,54 +1,39 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        let answer;
+        let princes = Array.from({ length: n }, (v, index) => index + 1);
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        while (princes.length > 1) {
+          // k번째 왕자 제거
+          if (k <= princes.length) {
+            princes.splice(k - 1, 1);
 
-<body>
-  <script>
-    function solution(n, k) {
-      /**
-      // 내 풀이
-      let answer;
-      // queue
-      // FIFO: 선입선출
-      let queue = Array.from({ length: n }, (v, i) => i + 1);
-      let count = 1;
+            // 제거되었기 때문에 k 다음 왕자가 k번째 왕자가 된다.
+            for (let i = 0; i < k - 1; i++) {
+              princes.push(princes.shift());
+            }
+          } else {
+            const index = k % princes.length || princes.length - 1;
+            princes.splice(index - 1, 1);
 
-      while (queue.length > 1) {
-        let out = queue.shift();
-
-        if (count === k) {
-          count = 1;
-        } else {
-          count++;
-          queue.push(out);
+            for (let i = 0; i < index; i++) {
+              princes.push(princes.shift());
+            }
+          }
         }
+
+        answer = princes.pop();
+
+        return answer;
       }
-      answer = queue[0];
-      /*/
-      let answer;
-      let queue = Array.from({ length: n }, (v, i) => i + 1);
-      // queue 길이가 0이상일 때
-      while (queue.length) {
-        // k전까지는 뒤로 돌린다.
-        for (let i = 1; i < k; i++) {
-          queue.push(queue.shift());
-        }
-        // k번째 수를 말하는 왕자는 제외
-        queue.shift();
-        // 최후에 남은 왕자가 답
-        if (queue.length === 1) {
-          answer = queue.shift();
-        }
-      }
-      /**/
-      return answer;
-    }
 
-    console.log(solution(8, 3));
-  </script>
-</body>
-
+      console.log(solution(8, 3));
+    </script>
+  </body>
 </html>

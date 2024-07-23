@@ -1,38 +1,35 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '';
+        const stack = [];
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        for (const letter of s) {
+          if (letter === '(') {
+            stack.push(letter);
+            continue;
+          }
 
-<body>
-  <script>
-    function solution(s) {
-      let answer = '';
-      let block = 0;
+          if (letter === ')') {
+            stack.pop(letter);
+            continue;
+          }
 
-      for (const l of s) {
-        if (l === '(') {
-          block++;
-          continue;
-        } else if (l === ')') {
-          block--;
-          continue;
+          if (stack.length <= 0) {
+            answer += letter;
+          }
         }
 
-        if (block > 0) {
-          continue;
-        } else {
-          answer += l;
-        }
+        return answer;
       }
 
-      return answer;
-    }
-
-    let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
-    console.log(solution(str));
-  </script>
-</body>
-
+      let str = '(A(BC)D)EF(G(H)(IJ)K)LM(N)';
+      console.log(solution(str));
+    </script>
+  </body>
 </html>

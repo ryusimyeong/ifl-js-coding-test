@@ -1,76 +1,51 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        const stack = [];
 
-<head>
-  <meta charset="UTF-8">
-  <title>출력결과</title>
-</head>
+        for (const letter of s) {
+          const number = Number(letter);
 
-<body>
-  <script>
-    function solution(s) {
-      /**
-       * 연산도 동적으로 할 수는 없을까..
-      let answer = 0;
-      // 내 풀이
-      const stack = [];
-      for (let v of s) {
-        if (!Number.isNaN(v / 1)) stack.push(v);
+          if (number) {
+            stack.push(number);
+            continue;
+          }
 
-        let n1 = 0;
-        let n2 = 0;
-        switch (v) {
-          case '+':
-            n1 = stack.pop() / 1
-            n2 = stack.pop() / 1
-            stack.push(n2 + n1)
-            break;
+          const lateset = stack.pop();
+          const prev = stack.pop();
 
-          case '-':
-            n1 = stack.pop() / 1
-            n2 = stack.pop() / 1
-            stack.push(n2 - n1)
-            break;
+          switch (letter) {
+            case '+':
+              stack.push(prev + lateset);
+              break;
 
-          case '*':
-            n1 = stack.pop() / 1
-            n2 = stack.pop() / 1
-            stack.push(n2 * n1)
-            break;
+            case '-':
+              stack.push(prev - lateset);
+              break;
 
-          case '/':
-            n1 = stack.pop() / 1
-            n2 = stack.pop() / 1
-            stack.push(n2 / n1)
-            break;
-        }
-      }
-      answer = stack[0];
-      /*/
-      let answer = 0;
-      const stack = [];
-      for (let x of s) {
-        if (!Number.isNaN(x / 1)) stack.push(x / 1);
-        else {
-          let rt = stack.pop();
-          let lt = stack.pop();
-          if (x === '+') {
-            stack.push(rt + lt);
-          } else if (x === '-') {
-            stack.push(rt - lt);
-          } else if (x === '*') {
-            stack.push(rt * lt);
-          } else if (x === '/') {
-            stack.push(rt / lt);
+            case '*':
+              stack.push(prev * lateset);
+              break;
+
+            default:
+              stack.push(prev / lateset);
+              break;
           }
         }
+
+        answer = stack.pop();
+
+        return answer;
       }
-      /**/
-      return answer;
-    }
 
-    let str = "352+*9-";
-    console.log(solution(str));
-  </script>
-</body>
-
+      let str = '352+*9-';
+      console.log(solution(str));
+    </script>
+  </body>
 </html>
