@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr1, arr2) {
+        let answer = [];
+
+        answer = [...arr1, ...arr2].sort((prev, next) => prev - next);
+
+        return answer;
+      }
+
+      console.log(solution([1, 3, 5], [2, 3, 6, 7, 9]));
+    </script>
+  </body>
+</html>

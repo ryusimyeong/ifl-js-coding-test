@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let answer = 'YES';
+        const hash1 = {};
+        const hash2 = {};
+        const str1Array = str1.split('');
+        const str2Array = str2.split('');
+        const str1Tuple = [...new Set(str1Array)];
+        const str2Tuple = [...new Set(str2Array)];
+
+        str1Tuple.forEach((char) => {
+          hash1[char] = 0;
+        });
+
+        str1Array.forEach((char) => {
+          hash1[char]++;
+        });
+
+        str2Tuple.forEach((char) => {
+          hash2[char] = 0;
+        });
+
+        str2Array.forEach((char) => {
+          hash2[char]++;
+        });
+
+        str1Tuple.forEach((char) => {
+          if (hash1[char] !== hash2[char]) {
+            answer = 'NO';
+          }
+        });
+
+        return answer;
+      }
+
+      console.log(solution('AbaAeCe', 'baeeACA'));
+      console.log(solution('abaCC', 'Caaab'));
+    </script>
+  </body>
+</html>
