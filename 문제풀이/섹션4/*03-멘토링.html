@@ -7,9 +7,37 @@
     <script>
       function solution(test) {
         let answer = 0;
+        const testLength = test.length;
+        const studentLength = test[0].length;
 
-        for (let i = 0; i < test.length; i++) {
-          for (let j = 0; j < test[i].length; j++) {}
+        // 학생 전체 탐색
+        for (let i = 1; i <= studentLength; i++) {
+          for (let j = 1; j <= studentLength; j++) {
+            let count = 0; // 시험
+
+            for (let k = 0; k < testLength; k++) {
+              let gradeI = 0;
+              let gradeJ = 0;
+
+              for (let l = 0; l < studentLength; l++) {
+                if (test[k][l] === i) {
+                  gradeI = l;
+                }
+                if (test[k][l] === j) {
+                  gradej = l;
+                }
+              }
+
+              if (gradeI < gradej) {
+                count++;
+              }
+            }
+
+            if (count === testLength) {
+              answer++;
+              console.log(i, j);
+            }
+          }
         }
 
         return answer;

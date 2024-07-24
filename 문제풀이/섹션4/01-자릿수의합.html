@@ -7,7 +7,9 @@
     <script>
       function solution(n, arr) {
         let answer;
+        let max = Number.MIN_SAFE_INTEGER;
 
+        /**
         // 자릿수 합 구하기
         const sumHashList = arr
           .map((number) =>
@@ -31,7 +33,20 @@
         answer = Math.max(
           ...candidateList.map((candidate) => candidate.number)
         );
+        /*/
+        for (const number of arr) {
+          const sum = String(number)
+            .split('')
+            .reduce((acc, digit) => acc + Number(digit), 0);
 
+          if (sum > max) {
+            max = sum;
+            answer = number;
+          } else if (sum === max && number > answer) {
+            answer = number;
+          }
+        }
+        /**/
         return answer;
       }
 

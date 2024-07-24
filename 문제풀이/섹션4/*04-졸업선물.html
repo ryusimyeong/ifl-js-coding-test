@@ -5,20 +5,54 @@
   </head>
   <body>
     <script>
-      function solution(m, product) {
+      function solution(products, money) {
         let answer = 0;
+        const length = products.length;
+
+        const sortedProducts = [...products].sort((prev, next) => {
+          const prevSum = prev[0] + prev[1];
+          const nextSum = next[0] + next[1];
+
+          return prevSum - nextSum;
+        });
+
+        for (let i = 0; i < length; i++) {
+          const discountedPrice =
+            sortedProducts[i][0] / 2 + sortedProducts[i][1];
+
+          let budget = money - discountedPrice;
+          let count = 1;
+
+          for (let j = 0; j < length; j++) {
+            if (i === j) continue;
+            if (budget <= 0) break;
+
+            const price = sortedProducts[j][0] + sortedProducts[j][1];
+
+            if (price <= budget) {
+              budget -= price;
+              count++;
+            } else {
+              break;
+            }
+          }
+          answer = Math.max(answer, count);
+        }
 
         return answer;
       }
 
       console.log(
-        solution(28, [
-          [6, 6],
-          [2, 2],
-          [4, 3],
-          [4, 5],
-          [10, 3],
-        ])
+        solution(
+          [
+            [6, 6],
+            [2, 2],
+            [4, 3],
+            [4, 5],
+            [10, 3],
+          ],
+          28
+        )
       );
     </script>
   </body>

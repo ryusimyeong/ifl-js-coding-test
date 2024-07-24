@@ -19,7 +19,7 @@
               return true;
             }
 
-            for (let i = 2; i < reversed; i++) {
+            for (let i = 2; i < Math.sqrt(reversed); i++) {
               if (reversed % i === 0) {
                 return false;
               }
