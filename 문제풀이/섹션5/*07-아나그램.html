@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let answer = 'YES';
+        const hash = {};
+
+        str1.split('').forEach((char) => {
+          if (Object.hasOwn(hash, char)) {
+            hash[char]++;
+          } else {
+            hash[char] = 1;
+          }
+        });
+
+        for (const char of str2) {
+          if (!Object.hasOwn(hash, char) || hash[char] === 0) {
+            answer = 'NO';
+            break;
+          }
+
+          hash[char]--;
+        }
+
+        return answer;
+      }
+
+      console.log(solution('AbaAeCe', 'baeeACA'));
+      console.log(solution('abaCC', 'Caaab'));
+    </script>
+  </body>
+</html>

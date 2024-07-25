@@ -6,9 +6,10 @@
   <body>
     <script>
       function solution(k, arr) {
-        let answer;
+        let answer = Number.MIN_SAFE_INTEGER;
+        /**
         let sumList = [];
-
+        
         for (let i = 0; i < arr.length - k - 1; i++) {
           let sum = 0;
 
@@ -21,6 +22,21 @@
 
         answer = Math.max(...sumList);
 
+        /*/
+        let sum = 0;
+
+        for (let i = 0; i < k; i++) {
+          sum += arr[i];
+        }
+        answer = sum;
+
+        for (let i = k; i <= arr.length - k; i++) {
+          sum -= arr[i - k];
+          sum += arr[i];
+          answer = Math.max(answer, sum);
+        }
+
+        /**/
         return answer;
       }
 

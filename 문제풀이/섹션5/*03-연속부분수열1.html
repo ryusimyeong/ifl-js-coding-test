@@ -7,6 +7,7 @@
     <script>
       function solution(m, arr) {
         let answer = 0;
+        /**
         let sum = 0;
         let len = arr.length;
 
@@ -24,6 +25,25 @@
             }
           }
         }
+        /*/
+        let lt = 0;
+        let rt = 0;
+        let sum = arr[0];
+
+        while (rt < arr.length) {
+          if (sum < m) {
+            rt++; // 오른쪽 포인터  이동
+            sum += arr[rt]; // 이동된 값 합산
+          } else if (sum > m) {
+            sum -= arr[lt]; // 이동 전 값 제외
+            lt++; // 왼쪽 포인터 이동
+          } else {
+            rt++; // 오른쪽 포인터  이동
+            sum += arr[rt]; // 이동된 값 합산
+            answer++; // 카운트
+          }
+        }
+        /**/
 
         return answer;
       }

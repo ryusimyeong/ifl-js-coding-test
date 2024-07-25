@@ -10,17 +10,14 @@
         let max = Number.MIN_SAFE_INTEGER;
         const rank = {};
         const strArray = s.split('');
-        const strTuple = [...new Set(strArray)];
-        // 초기화
-        strTuple.forEach((letter) => {
-          rank[letter] = 0;
-        });
+
         // 투표
         strArray.forEach((letter) => {
-          rank[letter]++;
+          Object.hasOwn(rank, letter) ? rank[letter]++ : (rank[letter] = 1);
         });
+
         // 선정
-        strTuple.forEach((letter) => {
+        [...new Set(strArray)].forEach((letter) => {
           if (max < rank[letter]) {
             max = rank[letter];
             answer = letter;

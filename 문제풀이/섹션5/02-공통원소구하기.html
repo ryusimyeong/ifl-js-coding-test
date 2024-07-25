@@ -7,10 +7,26 @@
     <script>
       function solution(arr1, arr2) {
         let answer = [];
-
+        /**
         answer = arr1.filter((n) => arr2.find((m) => n === m));
         answer.sort((prev, next) => prev - next);
-
+        /*/
+        let p1 = 0;
+        let p2 = 0;
+        arr1.sort((prev, next) => prev - next);
+        arr2.sort((prev, next) => prev - next);
+        while (p1 < arr1.length && p2 < arr2.length) {
+          if (arr1[p1] > arr2[p2]) {
+            p2++;
+          } else if (arr1[p1] < arr2[p2]) {
+            p1++;
+          } else {
+            answer.push(arr1[p1]);
+            p1++;
+            p2++;
+          }
+        }
+        /**/
         return answer;
       }
 
