@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        let answer;
+        let princes = Array.from({ length: n }, (v, i) => i + 1);
+
+        while (princes.length > 1) {
+          for (let i = 1; i <= k; i++) {
+            i === k ? princes.shift() : princes.push(princes.shift());
+          }
+        }
+
+        answer = princes[0];
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>

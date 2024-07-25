@@ -9,23 +9,24 @@
         let answer = 0;
         const stack = [];
 
-        for (let i = 0; i < moves.length; i++) {
-          const targetIndex = moves[i] - 1;
+        for (const move of moves) {
+          const column = move - 1;
 
-          for (let j = 0; j < board.length; j++) {
-            if (!board[j][targetIndex]) {
+          for (let row = 0; row < board.length; row++) {
+            if (!board[row][column]) {
               continue;
             }
 
-            stack.push(board[j][targetIndex]); // 바구니에 넣기
-            board[j][targetIndex] = 0; // 넣었으니 빈 공간으로 만들어주기
-            break;
-          }
+            if (board[row][column] === stack[stack.length - 1]) {
+              // 바구니 맨 위 값과 비교
+              stack.pop();
+              answer += 2;
+            } else {
+              stack.push(board[row][column]); // 바구니에 넣기
+            }
 
-          if (stack[stack.length - 2] === stack[stack.length - 1]) {
-            stack.pop();
-            stack.pop();
-            answer += 2;
+            board[row][column] = 0; // 빈 공간으로 만들어주기
+            break; // 탐색 중지
           }
         }
 

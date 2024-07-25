@@ -6,42 +6,39 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
         const stack = [];
 
-        for (const letter of s) {
-          const number = Number(letter);
+        for (const char of s) {
+          const number = Number(char);
 
           if (number) {
             stack.push(number);
             continue;
           }
 
-          const lateset = stack.pop();
-          const prev = stack.pop();
+          const right = stack.pop();
+          const left = stack.pop();
 
-          switch (letter) {
+          switch (char) {
             case '+':
-              stack.push(prev + lateset);
+              stack.push(left + right);
               break;
 
             case '-':
-              stack.push(prev - lateset);
+              stack.push(left - right);
               break;
 
             case '*':
-              stack.push(prev * lateset);
+              stack.push(left * right);
               break;
 
             default:
-              stack.push(prev / lateset);
+              stack.push(left / right);
               break;
           }
         }
 
-        answer = stack.pop();
-
-        return answer;
+        return stack.pop();
       }
 
       let str = '352+*9-';

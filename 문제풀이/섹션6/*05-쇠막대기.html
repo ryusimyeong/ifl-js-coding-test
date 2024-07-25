@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        const stack = [];
+
+        s.split('').forEach((char, index) => {
+          if (char === '(') {
+            stack.push(char);
+          } else {
+            stack.pop(); // 먼저 빼야 레이저일 때를 제외할 수 있음
+            s[index - 1] === '(' ? (answer += stack.length) : answer++;
+          }
+        });
+
+        return answer;
+      }
+
+      console.log(solution('()(((()())(())()))(())')); // 17
+      console.log(solution('(((()(()()))(())()))(()())')); // 24
+    </script>
+  </body>
+</html>

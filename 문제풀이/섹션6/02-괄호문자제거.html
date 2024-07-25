@@ -9,19 +9,19 @@
         let answer = '';
         const stack = [];
 
-        for (const letter of s) {
-          if (letter === '(') {
-            stack.push(letter);
+        for (const char of s) {
+          if (char === '(') {
+            stack.push(char);
             continue;
           }
 
-          if (letter === ')') {
-            stack.pop(letter);
+          if (char === ')') {
+            stack.pop(char);
             continue;
           }
 
-          if (stack.length <= 0) {
-            answer += letter;
+          if (!stack.length) {
+            answer += char;
           }
         }
 
