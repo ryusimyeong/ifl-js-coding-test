@@ -7,13 +7,18 @@
   <body>
     <script>
       function solution(arr) {
-        const plusList = arr.filter((n) => n > 0);
-        const minusList = arr.filter((n) => n < 0);
+        /**
+         * 삽입정렬
+         */
 
-        return [...minusList, ...plusList];
+        for (let i = 1; i < arr.length; i++) {
+          for (let j = i - 1; j >= 0; j--) {}
+        }
+
+        return answer;
       }
 
-      let arr = [1, 2, 3, -3, -2, 5, 6, -6];
+      let arr = [11, 7, 5, 6, 10, 9];
       console.log(solution(arr));
     </script>
   </body>

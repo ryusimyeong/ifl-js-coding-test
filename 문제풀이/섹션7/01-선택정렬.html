@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+
+  <body>
+    <script>
+      /** 선택 정렬
+       * i번쨰 요소와 다음 요소들을 비교해서 작은 걸 앞에 놓는다.
+       */
+      function solution(arr) {
+        let answer = arr;
+        const length = arr.length;
+
+        for (let i = 0; i < length - 1; i++) {
+          let index = i;
+
+          for (let j = i + 1; j < length; j++) {
+            if (arr[index] > arr[j]) {
+              index = j;
+            }
+          }
+
+          [arr[i], arr[index]] = [arr[index], arr[i]];
+        }
+
+        return answer;
+      }
+
+      console.log(solution([13, 5, 11, 7, 23, 15]));
+    </script>
+  </body>
+</html>

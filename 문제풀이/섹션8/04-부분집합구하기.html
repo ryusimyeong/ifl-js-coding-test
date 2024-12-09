@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const ch = Array.from({ length: n + 1 }, () => 0);
+
+        function DFS(v) {
+          if (v === n + 1) {
+            const str = ch
+              .map((num, index) => {
+                if (num === 1) {
+                  return index;
+                }
+              })
+              .filter((number) => number)
+              .join('');
+          } else {
+            ch[v] = 1;
+            DFS(v + 1);
+            ch[v] = 0;
+            DFS(v + 1);
+          }
+        }
+
+        DFS(1);
+      }
+
+      solution(3);
+    </script>
+  </body>
+</html>
